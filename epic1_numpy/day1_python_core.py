@@ -1,8 +1,8 @@
-from functools import reduce
 from collections import Counter
+from functools import reduce, wraps
+from typing import Any, Callable, Generator
 import logging
 import time
-from functools import wraps
 
 
 def list_comprehension(numbers: list[int]) -> list[int]:
@@ -49,7 +49,7 @@ def display_details(**kwargs: str) -> dict[str, str]:
     return kwargs
 
 
-def fibonacci(n: int):
+def fibonacci(n: int) -> Generator[int, None, None]:
     a, b = 0, 1
 
     while a <= n:
@@ -57,9 +57,9 @@ def fibonacci(n: int):
         a, b = b, a + b
 
 
-def timer(func):
+def timer(func: Callable[..., Any]) -> Callable[..., Any]:
     @wraps(func)
-    def wrapper(*args, **kwargs):
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
         start_time = time.perf_counter()
         result = func(*args, **kwargs)
         end_time = time.perf_counter()
@@ -75,9 +75,9 @@ def timer(func):
     return wrapper
 
 
-def log_call(func):
+def log_call(func: Callable[..., Any]) -> Callable[..., Any]:
     @wraps(func)
-    def wrapper(*args, **kwargs):
+    def wrapper(*args: Any, **kwargs: Any) -> Any:
         logging.info(
             "Calling %s with args=%s, kwargs=%s",
             func.__name__,
@@ -110,12 +110,14 @@ def word_frequency(text: str) -> dict[str, int]:
 
 @timer
 @log_call
-def chunk_list(data: list, size: int):
+def chunk_list(data: list, size: int) -> Generator[list, None, None]:
     for i in range(0, len(data), size):
-        yield data[i:i + size]
+        yield data[i : i + size]
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+
     numbers = [1, 2, 3, 4, 5]
 
     print("List comprehension:", list_comprehension(numbers))
