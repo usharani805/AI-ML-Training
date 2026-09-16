@@ -1,5 +1,15 @@
+import sys
+from pathlib import Path
+
 import numpy as np
-from common.numpy_utils import normalize_array, filter_outliers
+
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from common.numpy_utils import normalize_array
 
 
 NUM_STUDENTS = 200
@@ -9,8 +19,10 @@ AT_RISK_THRESHOLD = 40
 
 def generate_scores() -> np.ndarray:
     np.random.seed(42)
+
     return np.random.randint(
-        0, 101,
+        0,
+        101,
         size=(NUM_STUDENTS, NUM_SUBJECTS)
     )
 
@@ -27,6 +39,7 @@ def compute_subject_stats(scores: np.ndarray) -> dict:
 
 def rank_students(scores: np.ndarray) -> np.ndarray:
     total_scores = np.sum(scores, axis=1)
+
     return np.argsort(total_scores)[::-1]
 
 
@@ -34,8 +47,11 @@ def identify_at_risk_students(
     scores: np.ndarray,
     threshold: float
 ) -> np.ndarray:
+
     average_scores = np.mean(scores, axis=1)
+
     mask = average_scores < threshold
+
     return np.where(mask)[0]
 
 
@@ -43,27 +59,41 @@ def normalize_scores(scores: np.ndarray) -> np.ndarray:
     return normalize_array(scores)
 
 
-def correlation_between_subjects(scores: np.ndarray) -> np.ndarray:
-    return np.corrcoef(scores, rowvar=False)
+def correlation_between_subjects(
+    scores: np.ndarray
+) -> np.ndarray:
+
+    return np.corrcoef(
+        scores,
+        rowvar=False
+    )
 
 
 def save_report(stats: dict, filepath: str):
+
     with open(filepath, "w") as file:
+
         for key, value in stats.items():
+
             file.write(f"{key}:\n")
             file.write(f"{value}\n\n")
 
 
 def main():
+
     scores = generate_scores()
 
     subject_stats = compute_subject_stats(scores)
+
     ranking = rank_students(scores)
+
     at_risk = identify_at_risk_students(
         scores,
         AT_RISK_THRESHOLD
     )
+
     normalized = normalize_scores(scores)
+
     correlation = correlation_between_subjects(scores)
 
     report_data = {
