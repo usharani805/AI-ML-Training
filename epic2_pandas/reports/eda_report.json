@@ -1,0 +1,1670 @@
+{
+    "univariate_statistics": {
+        "numeric": {
+            "Employee_ID": {
+                "count": 100,
+                "mean": 50.52,
+                "median": 50.5,
+                "min": 2.0,
+                "max": 100.0,
+                "std": 28.97943541147199
+            },
+            "Age": {
+                "count": 100,
+                "mean": 29.467254901960786,
+                "median": 29.362745098039216,
+                "min": 25.0,
+                "max": 34.0,
+                "std": 2.846991063894582
+            },
+            "Salary": {
+                "count": 100,
+                "mean": 62743.13725490196,
+                "median": 63578.43137254902,
+                "min": 40000.0,
+                "max": 85000.0,
+                "std": 14251.288764646024
+            }
+        },
+        "categorical": {
+            "Name": {
+                "Employee_1": 3,
+                "Employee_3": 1,
+                "Employee_4": 1,
+                "Employee_5": 1,
+                "Employee_6": 1,
+                "Employee_7": 1,
+                "Employee_9": 1,
+                "Employee_10": 1,
+                "Employee_11": 1,
+                "Employee_12": 1,
+                "Employee_13": 1,
+                "Employee_14": 1,
+                "Employee_15": 1,
+                "Employee_16": 1,
+                "Employee_17": 1,
+                "Employee_18": 1,
+                "Employee_19": 1,
+                "Employee_20": 1,
+                "Employee_21": 1,
+                "Employee_22": 1,
+                "Employee_23": 1,
+                "Employee_24": 1,
+                "Employee_25": 1,
+                "Employee_26": 1,
+                "Employee_27": 1,
+                "Employee_28": 1,
+                "Employee_29": 1,
+                "Employee_30": 1,
+                "Employee_31": 1,
+                "Employee_32": 1,
+                "Employee_33": 1,
+                "Employee_34": 1,
+                "Employee_35": 1,
+                "Employee_36": 1,
+                "Employee_37": 1,
+                "Employee_38": 1,
+                "Employee_39": 1,
+                "Employee_40": 1,
+                "Employee_41": 1,
+                "Employee_42": 1,
+                "Employee_43": 1,
+                "Employee_44": 1,
+                "Employee_45": 1,
+                "Employee_46": 1,
+                "Employee_47": 1,
+                "Employee_48": 1,
+                "Employee_49": 1,
+                "Employee_50": 1,
+                "Employee_51": 1,
+                "Employee_52": 1,
+                "Employee_53": 1,
+                "Employee_54": 1,
+                "Employee_55": 1,
+                "Employee_56": 1,
+                "Employee_57": 1,
+                "Employee_58": 1,
+                "Employee_59": 1,
+                "Employee_60": 1,
+                "Employee_61": 1,
+                "Employee_62": 1,
+                "Employee_63": 1,
+                "Employee_64": 1,
+                "Employee_65": 1,
+                "Employee_66": 1,
+                "Employee_67": 1,
+                "Employee_68": 1,
+                "Employee_69": 1,
+                "Employee_70": 1,
+                "Employee_71": 1,
+                "Employee_72": 1,
+                "Employee_73": 1,
+                "Employee_74": 1,
+                "Employee_75": 1,
+                "Employee_76": 1,
+                "Employee_77": 1,
+                "Employee_78": 1,
+                "Employee_79": 1,
+                "Employee_80": 1,
+                "Employee_81": 1,
+                "Employee_82": 1,
+                "Employee_83": 1,
+                "Employee_84": 1,
+                "Employee_85": 1,
+                "Employee_86": 1,
+                "Employee_87": 1,
+                "Employee_88": 1,
+                "Employee_89": 1,
+                "Employee_90": 1,
+                "Employee_91": 1,
+                "Employee_92": 1,
+                "Employee_93": 1,
+                "Employee_94": 1,
+                "Employee_95": 1,
+                "Employee_96": 1,
+                "Employee_97": 1,
+                "Employee_98": 1,
+                "Employee_99": 1,
+                "Employee_100": 1
+            },
+            "Department": {
+                "HR": 22,
+                "IT": 20,
+                "Marketing": 20,
+                "Sales": 19,
+                "Finance": 19
+            },
+            "Joining_Date": {
+                "2020-01-05": 2,
+                "2020-01-11": 2,
+                "2020-01-01": 1,
+                "2020-01-02": 1,
+                "2020-01-03": 1,
+                "2020-01-04": 1,
+                "2020-01-07": 1,
+                "2020-01-08": 1,
+                "2020-01-09": 1,
+                "2020-01-10": 1,
+                "2020-01-13": 1,
+                "2020-01-14": 1,
+                "2020-01-15": 1,
+                "2020-01-16": 1,
+                "2020-01-17": 1,
+                "2020-01-18": 1,
+                "2020-01-19": 1,
+                "2020-01-20": 1,
+                "2020-01-21": 1,
+                "2020-01-22": 1,
+                "2020-01-23": 1,
+                "2020-01-24": 1,
+                "2020-01-25": 1,
+                "2020-01-26": 1,
+                "2020-01-27": 1,
+                "2020-01-28": 1,
+                "2020-01-29": 1,
+                "2020-01-30": 1,
+                "2020-01-31": 1,
+                "2020-02-01": 1,
+                "2020-02-02": 1,
+                "2020-02-03": 1,
+                "2020-02-04": 1,
+                "2020-02-05": 1,
+                "2020-02-06": 1,
+                "2020-02-07": 1,
+                "2020-02-08": 1,
+                "2020-02-09": 1,
+                "2020-02-10": 1,
+                "2020-02-11": 1,
+                "2020-02-12": 1,
+                "2020-02-13": 1,
+                "2020-02-14": 1,
+                "2020-02-15": 1,
+                "2020-02-16": 1,
+                "2020-02-17": 1,
+                "2020-02-18": 1,
+                "2020-02-19": 1,
+                "2020-02-20": 1,
+                "2020-02-21": 1,
+                "2020-02-22": 1,
+                "2020-02-23": 1,
+                "2020-02-24": 1,
+                "2020-02-25": 1,
+                "2020-02-26": 1,
+                "2020-02-27": 1,
+                "2020-02-28": 1,
+                "2020-02-29": 1,
+                "2020-03-01": 1,
+                "2020-03-02": 1,
+                "2020-03-03": 1,
+                "2020-03-04": 1,
+                "2020-03-05": 1,
+                "2020-03-06": 1,
+                "2020-03-07": 1,
+                "2020-03-08": 1,
+                "2020-03-09": 1,
+                "2020-03-10": 1,
+                "2020-03-11": 1,
+                "2020-03-12": 1,
+                "2020-03-13": 1,
+                "2020-03-14": 1,
+                "2020-03-15": 1,
+                "2020-03-16": 1,
+                "2020-03-17": 1,
+                "2020-03-18": 1,
+                "2020-03-19": 1,
+                "2020-03-20": 1,
+                "2020-03-21": 1,
+                "2020-03-22": 1,
+                "2020-03-23": 1,
+                "2020-03-24": 1,
+                "2020-03-25": 1,
+                "2020-03-26": 1,
+                "2020-03-27": 1,
+                "2020-03-28": 1,
+                "2020-03-29": 1,
+                "2020-03-30": 1,
+                "2020-03-31": 1,
+                "2020-04-01": 1,
+                "2020-04-02": 1,
+                "2020-04-03": 1,
+                "2020-04-04": 1,
+                "2020-04-05": 1,
+                "2020-04-06": 1,
+                "2020-04-07": 1,
+                "2020-04-08": 1,
+                "2020-04-09": 1
+            }
+        }
+    },
+    "correlation_matrix": {
+        "Employee_ID": {
+            "Employee_ID": 1.0,
+            "Age": 0.1159,
+            "Salary": 0.0767
+        },
+        "Age": {
+            "Employee_ID": 0.1159,
+            "Age": 1.0,
+            "Salary": 0.9735
+        },
+        "Salary": {
+            "Employee_ID": 0.0767,
+            "Age": 0.9735,
+            "Salary": 1.0
+        }
+    },
+    "outliers": {
+        "Employee_ID": {
+            "count": 0,
+            "rows": []
+        },
+        "Age": {
+            "count": 0,
+            "rows": []
+        },
+        "Salary": {
+            "count": 0,
+            "rows": []
+        }
+    },
+    "pivot_tables": {
+        "department_name_salary_mean": {
+            "Employee_1": {
+                "Finance": 75000.0,
+                "HR": 45000.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_10": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_100": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_11": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 62156.86274509804,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_12": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_13": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_14": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_15": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_16": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_17": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_18": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_19": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            },
+            "Employee_20": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_21": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_22": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_23": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_24": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_25": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_26": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_27": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_28": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_29": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            },
+            "Employee_3": {
+                "Finance": 0.0,
+                "HR": 50000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_30": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_31": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_32": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_33": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_34": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_35": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_36": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_37": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_38": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_39": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            },
+            "Employee_4": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_40": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_41": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_42": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_43": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_44": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_45": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_46": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_47": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_48": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_49": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            },
+            "Employee_5": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 62156.86274509804,
+                "Sales": 0.0
+            },
+            "Employee_50": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_51": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_52": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_53": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_54": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_55": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_56": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_57": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_58": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_59": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            },
+            "Employee_6": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_60": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_61": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_62": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_63": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_64": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_65": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_66": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_67": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_68": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_69": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            },
+            "Employee_7": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_70": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_71": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_72": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_73": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_74": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_75": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_76": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_77": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_78": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_79": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            },
+            "Employee_80": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_81": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_82": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_83": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_84": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_85": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_86": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_87": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_88": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_89": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            },
+            "Employee_9": {
+                "Finance": 0.0,
+                "HR": 80000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_90": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 85000.0,
+                "Sales": 0.0
+            },
+            "Employee_91": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 40000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_92": {
+                "Finance": 0.0,
+                "HR": 45000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_93": {
+                "Finance": 50000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_94": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 55000.0
+            },
+            "Employee_95": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 60000.0,
+                "Sales": 0.0
+            },
+            "Employee_96": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 65000.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_97": {
+                "Finance": 0.0,
+                "HR": 70000.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_98": {
+                "Finance": 75000.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_99": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 80000.0
+            }
+        },
+        "department_name_age_mean": {
+            "Employee_1": {
+                "Finance": 32.0,
+                "HR": 26.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_10": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.362745098039216,
+                "Sales": 0.0
+            },
+            "Employee_100": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_11": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_12": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_13": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_14": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_15": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_16": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_17": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_18": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_19": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            },
+            "Employee_20": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_21": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_22": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_23": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_24": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_25": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_26": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_27": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_28": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_29": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            },
+            "Employee_3": {
+                "Finance": 0.0,
+                "HR": 27.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_30": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_31": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_32": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_33": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_34": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_35": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_36": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_37": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_38": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_39": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            },
+            "Employee_4": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 29.362745098039216
+            },
+            "Employee_40": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_41": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_42": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_43": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_44": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_45": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_46": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_47": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_48": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_49": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            },
+            "Employee_5": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_50": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_51": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_52": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_53": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_54": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_55": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_56": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_57": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_58": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_59": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            },
+            "Employee_6": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_60": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_61": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_62": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_63": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_64": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_65": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_66": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_67": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_68": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_69": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            },
+            "Employee_7": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_70": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_71": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_72": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_73": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_74": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_75": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_76": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_77": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_78": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_79": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            },
+            "Employee_80": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_81": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_82": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_83": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_84": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_85": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_86": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_87": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_88": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_89": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            },
+            "Employee_9": {
+                "Finance": 0.0,
+                "HR": 33.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_90": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 34.0,
+                "Sales": 0.0
+            },
+            "Employee_91": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 25.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_92": {
+                "Finance": 0.0,
+                "HR": 26.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_93": {
+                "Finance": 27.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_94": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 28.0
+            },
+            "Employee_95": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 29.0,
+                "Sales": 0.0
+            },
+            "Employee_96": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 30.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_97": {
+                "Finance": 0.0,
+                "HR": 31.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_98": {
+                "Finance": 32.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 0.0
+            },
+            "Employee_99": {
+                "Finance": 0.0,
+                "HR": 0.0,
+                "IT": 0.0,
+                "Marketing": 0.0,
+                "Sales": 33.0
+            }
+        }
+    },
+    "salary_categories": {
+        "High": 52,
+        "Low": 29,
+        "Medium": 19
+    },
+    "age_groups_apply": {
+        "Below_30": 51,
+        "30_and_above": 49
+    },
+    "department_mapping_map": {
+        "Human Resources": 22,
+        "Technology": 20,
+        "Marketing": 20,
+        "Sales": 19,
+        "Finance": 19
+    },
+    "insights": [
+        "Marketing has the highest average salary at 72607.84.",
+        "IT has the lowest average salary at 53607.84.",
+        "The strongest numeric correlation is between Age and Salary, with a correlation of 0.974.",
+        "IQR analysis detected 0 outlier rows across the numeric columns."
+    ]
+}
