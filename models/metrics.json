@@ -1,0 +1,5 @@
+{
+    "task": "classification",
+    "model": "random_forest",
+    "accuracy": 0.956140350877193
+}
