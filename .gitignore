@@ -3,3 +3,4 @@ __pycache__/
 .coverage
 epic4_ml/models/*.joblib
 epic5_advanced_ml/day25_outputs/*/model.joblib
+epic5_advanced_ml/outputs/*/model.joblib

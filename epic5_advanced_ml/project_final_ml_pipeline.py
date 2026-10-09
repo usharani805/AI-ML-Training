@@ -1,4 +1,3 @@
-
 """Final end-to-end machine learning pipeline for Epic 5."""
 
 import json
@@ -46,6 +45,50 @@ from common.ml_utils import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+def build_leaderboard(results: dict) -> pd.DataFrame:
+    """Build and sort a leaderboard from model result dictionaries."""
+    if not results:
+        return pd.DataFrame()
+
+    task = (
+        results.get("task")
+        if isinstance(results.get("task"), str)
+        else None
+    )
+
+    rows = []
+
+    for name, result in results.items():
+        if name == "task" or not isinstance(result, dict):
+            continue
+
+        row = dict(result)
+        row.setdefault("model", name)
+        rows.append(row)
+
+    if not rows:
+        return pd.DataFrame()
+
+    leaderboard = pd.DataFrame(rows)
+
+    if "cv_mean" not in leaderboard.columns:
+        raise ValueError("Model results must include cv_mean.")
+
+    if task is None:
+        task = (
+            "regression"
+            if {"rmse", "mae", "r2"}.intersection(
+                leaderboard.columns
+            )
+            else "classification"
+        )
+
+    return leaderboard.sort_values(
+        "cv_mean",
+        ascending=(task == "regression"),
+    ).reset_index(drop=True)
 
 
 class MLPipelineRunner:
@@ -171,6 +214,7 @@ class MLPipelineRunner:
         """Return the cross-validation scoring metric."""
         if self.task == "classification":
             return "f1"
+
         return "neg_root_mean_squared_error"
 
     def _evaluate(self, model):
@@ -178,19 +222,31 @@ class MLPipelineRunner:
         predictions = model.predict(self.X_test)
 
         if self.task == "regression":
-            mse = mean_squared_error(self.y_test, predictions)
+            mse = mean_squared_error(
+                self.y_test,
+                predictions,
+            )
+
             return {
                 "mae": float(
-                    mean_absolute_error(self.y_test, predictions)
+                    mean_absolute_error(
+                        self.y_test,
+                        predictions,
+                    )
                 ),
                 "mse": float(mse),
                 "rmse": float(np.sqrt(mse)),
-                "r2": float(r2_score(self.y_test, predictions)),
+                "r2": float(
+                    r2_score(self.y_test, predictions)
+                ),
             }
 
         metrics = {
             "accuracy": float(
-                accuracy_score(self.y_test, predictions)
+                accuracy_score(
+                    self.y_test,
+                    predictions,
+                )
             ),
             "precision": float(
                 precision_score(
@@ -216,14 +272,25 @@ class MLPipelineRunner:
         }
 
         if hasattr(model, "predict_proba"):
-            probabilities = model.predict_proba(self.X_test)[:, 1]
+            probabilities = model.predict_proba(
+                self.X_test
+            )[:, 1]
+
             metrics["roc_auc"] = float(
-                roc_auc_score(self.y_test, probabilities)
+                roc_auc_score(
+                    self.y_test,
+                    probabilities,
+                )
             )
+
         elif hasattr(model, "decision_function"):
             scores = model.decision_function(self.X_test)
+
             metrics["roc_auc"] = float(
-                roc_auc_score(self.y_test, scores)
+                roc_auc_score(
+                    self.y_test,
+                    scores,
+                )
             )
 
         return metrics
@@ -232,6 +299,7 @@ class MLPipelineRunner:
         """Train candidates and create a sorted leaderboard."""
         rows = []
         candidates = self._build_candidates()
+
         self.models = {}
         failures = {}
 
@@ -245,7 +313,12 @@ class MLPipelineRunner:
                     cv_pipeline = self._build_pipeline(estimator)
 
                 start = time.perf_counter()
-                pipeline.fit(self.X_train, self.y_train)
+
+                pipeline.fit(
+                    self.X_train,
+                    self.y_train,
+                )
+
                 training_time = time.perf_counter() - start
 
                 scores = cross_val_score(
@@ -267,49 +340,76 @@ class MLPipelineRunner:
                     "model": name,
                     "cv_mean": float(np.mean(cv_values)),
                     "cv_std": float(np.std(cv_values)),
-                    "training_time_seconds": float(training_time),
+                    "training_time_seconds": float(
+                        training_time
+                    ),
                     **self._evaluate(pipeline),
                 }
 
                 rows.append(row)
                 self.models[name] = pipeline
+
                 logger.info("Completed model: %s", name)
 
             except Exception as exc:
-                failures[name] = f"{type(exc).__name__}: {exc}"
-                logger.exception("Skipping failed model: %s", name)
+                failures[name] = (
+                    f"{type(exc).__name__}: {exc}"
+                )
+
+                logger.exception(
+                    "Skipping failed model: %s",
+                    name,
+                )
 
         if not rows:
             details = "\n".join(
                 f"{name}: {error}"
                 for name, error in failures.items()
             )
+
             raise RuntimeError(
                 "All model candidates failed. Actual errors:\n"
                 + details
             )
 
-        leaderboard = pd.DataFrame(rows)
-        leaderboard = leaderboard.sort_values(
-            "cv_mean",
-            ascending=(self.task == "regression"),
-        ).reset_index(drop=True)
+        result_mapping = {
+            row["model"]: row
+            for row in rows
+        }
+        result_mapping["task"] = self.task
 
-        self.leaderboard = leaderboard
-        self.output_dir.mkdir(parents=True, exist_ok=True)
-        leaderboard.to_csv(
+        self.leaderboard = build_leaderboard(
+            result_mapping
+        )
+
+        self.output_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        self.leaderboard.to_csv(
             self.output_dir / "leaderboard.csv",
             index=False,
         )
 
-        return leaderboard
+        return self.leaderboard
 
     def tune_top_candidates(self, n=2):
         """Tune the top n candidates using RandomizedSearchCV."""
+        if n < 1:
+            raise ValueError(
+                "n must be at least 1."
+            )
+
         if self.leaderboard.empty:
             self.run_all_models()
 
-        top_names = self.leaderboard["model"].head(n).tolist()
+        top_names = (
+            self.leaderboard["model"]
+            .head(n)
+            .tolist()
+        )
+
         candidates = self._build_candidates()
         tuned_models = {}
 
@@ -319,23 +419,54 @@ class MLPipelineRunner:
             },
             "knn": {
                 "model__n_neighbors": [3, 5, 7, 9, 11],
-                "model__weights": ["uniform", "distance"],
+                "model__weights": [
+                    "uniform",
+                    "distance",
+                ],
             },
             "svm": {
                 "model__C": [0.1, 1.0, 10.0],
-                "model__kernel": ["linear", "rbf"],
+                "model__kernel": [
+                    "linear",
+                    "rbf",
+                ],
             },
             "decision_tree": {
-                "model__max_depth": [None, 3, 5, 10],
+                "model__max_depth": [
+                    None,
+                    3,
+                    5,
+                    10,
+                ],
             },
             "random_forest": {
-                "model__n_estimators": [50, 100, 150],
-                "model__max_depth": [None, 5, 10],
+                "model__n_estimators": [
+                    50,
+                    100,
+                    150,
+                ],
+                "model__max_depth": [
+                    None,
+                    5,
+                    10,
+                ],
             },
             "gradient_boosting": {
-                "model__n_estimators": [50, 100, 150],
-                "model__learning_rate": [0.03, 0.1, 0.2],
-                "model__max_depth": [2, 3, 5],
+                "model__n_estimators": [
+                    50,
+                    100,
+                    150,
+                ],
+                "model__learning_rate": [
+                    0.03,
+                    0.1,
+                    0.2,
+                ],
+                "model__max_depth": [
+                    2,
+                    3,
+                    5,
+                ],
             },
             "linear_regression": {},
             "stacking": {},
@@ -347,33 +478,51 @@ class MLPipelineRunner:
             if isinstance(estimator, Pipeline):
                 pipeline = clone(estimator)
             else:
-                pipeline = self._build_pipeline(estimator)
+                pipeline = self._build_pipeline(
+                    estimator
+                )
 
-            params = param_distributions.get(name, {})
+            params = param_distributions.get(
+                name,
+                {},
+            )
 
-            if not params:
-                tuned_models[name] = pipeline.fit(
+            try:
+                if not params:
+                    tuned_models[name] = pipeline.fit(
+                        self.X_train,
+                        self.y_train,
+                    )
+                    continue
+
+                search = RandomizedSearchCV(
+                    estimator=pipeline,
+                    param_distributions=params,
+                    n_iter=min(5, max(1, len(params))),
+                    cv=5,
+                    scoring=self._primary_metric(),
+                    random_state=42,
+                    n_jobs=-1,
+                    error_score="raise",
+                )
+
+                search.fit(
                     self.X_train,
                     self.y_train,
                 )
-                continue
 
-            search = RandomizedSearchCV(
-                estimator=pipeline,
-                param_distributions=params,
-                n_iter=min(5, max(1, len(params))),
-                cv=5,
-                scoring=self._primary_metric(),
-                random_state=42,
-                n_jobs=-1,
-                error_score="raise",
-            )
+                tuned_models[name] = search.best_estimator_
 
-            search.fit(self.X_train, self.y_train)
-            tuned_models[name] = search.best_estimator_
+            except Exception:
+                logger.exception(
+                    "Skipping failed tuning for model: %s",
+                    name,
+                )
 
         if not tuned_models:
-            raise RuntimeError("No candidate model could be tuned.")
+            raise RuntimeError(
+                "No candidate model could be tuned."
+            )
 
         tuned_rows = []
         self.models.update(tuned_models)
@@ -389,7 +538,9 @@ class MLPipelineRunner:
             )
 
             cv_values = (
-                -scores if self.task == "regression" else scores
+                -scores
+                if self.task == "regression"
+                else scores
             )
 
             tuned_rows.append({
@@ -401,22 +552,32 @@ class MLPipelineRunner:
             })
 
         tuned_board = pd.DataFrame(tuned_rows)
+
         tuned_board = tuned_board.sort_values(
             "cv_mean",
             ascending=(self.task == "regression"),
         ).reset_index(drop=True)
 
         self.leaderboard = pd.concat(
-            [self.leaderboard, tuned_board],
+            [
+                self.leaderboard,
+                tuned_board,
+            ],
             ignore_index=True,
         )
-        self.leaderboard = self.leaderboard.drop_duplicates(
-            subset=["model"],
-            keep="last",
-        ).sort_values(
-            "cv_mean",
-            ascending=(self.task == "regression"),
-        ).reset_index(drop=True)
+
+        self.leaderboard = (
+            self.leaderboard
+            .drop_duplicates(
+                subset=["model"],
+                keep="last",
+            )
+            .sort_values(
+                "cv_mean",
+                ascending=(self.task == "regression"),
+            )
+            .reset_index(drop=True)
+        )
 
         self.leaderboard.to_csv(
             self.output_dir / "leaderboard.csv",
@@ -430,17 +591,26 @@ class MLPipelineRunner:
         if model is None:
             if self.leaderboard.empty:
                 self.run_all_models()
+
             model_name = self.leaderboard.iloc[0]["model"]
             model = self.models[model_name]
+
         elif isinstance(model, str):
             model_name = model
+
             if model_name not in self.models:
                 raise ValueError(
                     f"Model not found: {model_name}"
                 )
+
             model = self.models[model_name]
+
         else:
-            model_name = getattr(model, "name", "final_model")
+            model_name = getattr(
+                model,
+                "name",
+                "final_model",
+            )
 
         scores = cross_val_score(
             clone(model),
@@ -452,54 +622,128 @@ class MLPipelineRunner:
         )
 
         values = (
-            -scores if self.task == "regression" else scores
+            -scores
+            if self.task == "regression"
+            else scores
         )
 
         self.final_cv_results = {
             "model": model_name,
             "cv_mean": float(np.mean(values)),
             "cv_std": float(np.std(values)),
-            "fold_scores": [float(value) for value in values],
+            "fold_scores": [
+                float(value)
+                for value in values
+            ],
         }
 
         return self.final_cv_results
 
-    def save_best(self, output_dir=None):
-        """Save the selected model, metrics, leaderboard, and report."""
-        if self.leaderboard.empty:
-            self.run_all_models()
-
+    def load_best(self, output_dir=None):
+        """Load a previously saved best model without retraining."""
         if output_dir is not None:
             self.output_dir = Path(output_dir)
 
-        self.output_dir.mkdir(parents=True, exist_ok=True)
+        model_path = self.output_dir / "model.joblib"
+        metrics_path = self.output_dir / "metrics.json"
+        leaderboard_path = (
+            self.output_dir / "leaderboard.csv"
+        )
 
-        best_name = str(self.leaderboard.iloc[0]["model"])
+        if not model_path.is_file():
+            raise FileNotFoundError(
+                f"Saved model not found: {model_path}. "
+                "Run with --tune first."
+            )
+
+        if not metrics_path.is_file():
+            raise FileNotFoundError(
+                f"Saved metrics not found: {metrics_path}. "
+                "Run with --tune first."
+            )
+
+        self.best_model = joblib.load(model_path)
+
+        with metrics_path.open(
+            "r",
+            encoding="utf-8",
+        ) as file:
+            metrics = json.load(file)
+
+        if metrics.get("task") != self.task:
+            raise ValueError(
+                f"Saved model task is {metrics.get('task')!r}, "
+                f"but requested task is {self.task!r}."
+            )
+
+        self.best_model_name = metrics.get(
+            "best_model",
+            "best_model",
+        )
+
+        self.models[self.best_model_name] = self.best_model
+
+        self.final_cv_results = metrics.get(
+            "cross_validation",
+            {},
+        )
+
+        if leaderboard_path.is_file():
+            self.leaderboard = pd.read_csv(
+                leaderboard_path
+            )
+
+        return self.best_model
+
+    def save_best(self, output_dir=None):
+        """Save the selected model, metrics, leaderboard, and report."""
+        if output_dir is not None:
+            self.output_dir = Path(output_dir)
+
+        if self.leaderboard.empty:
+            self.run_all_models()
+
+        self.output_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        best_name = str(
+            self.leaderboard.iloc[0]["model"]
+        )
+
         best_model = self.models[best_name]
 
         self.best_model_name = best_name
         self.best_model = best_model
 
         model_path = self.output_dir / "model.joblib"
-        joblib.dump(best_model, model_path)
 
-        # Keep metric values both at the top level and in test_metrics.
-        test_metrics = self._evaluate(best_model)
-        cv_results = self.cross_validate_final(best_model)
+        joblib.dump(
+            best_model,
+            model_path,
+        )
 
         metrics = {
             "task": self.task,
             "best_model": best_name,
-            **test_metrics,
-            "test_metrics": test_metrics,
-            "cross_validation": cv_results,
+            "test_metrics": self._evaluate(best_model),
+            "cross_validation": self.cross_validate_final(
+                best_model
+            ),
         }
 
-        with (self.output_dir / "metrics.json").open(
+        with (
+            self.output_dir / "metrics.json"
+        ).open(
             "w",
             encoding="utf-8",
         ) as file:
-            json.dump(metrics, file, indent=4)
+            json.dump(
+                metrics,
+                file,
+                indent=4,
+            )
 
         self.leaderboard.to_csv(
             self.output_dir / "leaderboard.csv",
@@ -514,8 +758,11 @@ class MLPipelineRunner:
             f"Selected model: {best_name}",
             "",
             "Selection is based on cross-validation performance.",
-            "Training time and model interpretability should also "
-            "be considered when choosing a model for deployment.",
+            (
+                "Training time and model interpretability should "
+                "also be considered when choosing a model "
+                "for deployment."
+            ),
             "",
             "## Leaderboard",
             "",
@@ -525,19 +772,29 @@ class MLPipelineRunner:
             "",
         ]
 
-        for metric, value in test_metrics.items():
-            report.append(f"- **{metric}:** {value:.6f}")
+        for metric, value in metrics["test_metrics"].items():
+            report.append(
+                f"- **{metric}:** {value:.6f}"
+            )
 
         report.extend([
             "",
             "## Cross-Validation",
             "",
-            f"- Mean: {cv_results['cv_mean']:.6f}",
-            f"- Standard deviation: {cv_results['cv_std']:.6f}",
+            (
+                f"- Mean: "
+                f"{metrics['cross_validation']['cv_mean']:.6f}"
+            ),
+            (
+                f"- Standard deviation: "
+                f"{metrics['cross_validation']['cv_std']:.6f}"
+            ),
             "",
         ])
 
-        (self.output_dir / "MODEL_SELECTION.md").write_text(
+        (
+            self.output_dir / "MODEL_SELECTION.md"
+        ).write_text(
             "\n".join(report),
             encoding="utf-8",
         )
