@@ -1,0 +1,9 @@
+{
+    "task": "classification",
+    "model": "logistic_regression",
+    "accuracy": 0.9736842105263158,
+    "f1": 0.9793103448275862,
+    "roc_auc": 0.9957010582010581,
+    "cv_mean": 0.9844721886606704,
+    "cv_std": 0.008331440728679156
+}
