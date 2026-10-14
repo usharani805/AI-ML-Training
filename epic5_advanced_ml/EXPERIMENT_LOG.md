@@ -4,7 +4,39 @@
 **Training Period:** 12–16 October 2026
 
 ## Day 1 — Baseline Review
-**Status:** Results to be documented.
+
+**Status:** Completed.
+
+**Objective:** Establish simple baseline scores before comparing advanced ML models.
+
+### Classification — Breast Cancer
+- Dataset: 569 rows, 30 features.
+- Train/test split: 455 / 114.
+- Split strategy: 80/20, `random_state=42`, stratified.
+- Baseline model: `DummyClassifier(strategy="most_frequent")`.
+- CV strategy: 5-fold `StratifiedKFold`.
+- CV F1 mean: 0.770270.
+- CV F1 standard deviation: 0.000000.
+- Test accuracy: 0.631579.
+- Test F1: 0.774194.
+
+### Regression — California Housing
+- Dataset: 20,640 rows, 8 original features before feature engineering.
+- Train/test split: 16,512 / 4,128.
+- Split strategy: 80/20, `random_state=42`.
+- Baseline model: `DummyRegressor(strategy="mean")`.
+- CV strategy: 5-fold `KFold`.
+- CV RMSE mean: 1.156172.
+- CV RMSE standard deviation: 0.012163.
+- Test RMSE: 1.144856.
+- Test R²: -0.000219.
+
+### Baseline conclusion
+The dummy models provide reference scores for later model comparisons. The classification baseline predicts the majority class, while the regression baseline predicts the training target mean. The negative regression R² indicates that the baseline does not explain the test target variance and provides a reference for evaluating trained regression models.
+
+**Output files:**
+- `epic5_advanced_ml/outputs/classification/baseline_metrics.json`
+- `epic5_advanced_ml/outputs/regression/baseline_metrics.json`
 
 ## Day 2 — Validation Strategy
 

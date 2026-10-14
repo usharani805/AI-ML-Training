@@ -1,0 +1,8 @@
+{
+  "task": "classification",
+  "model": "DummyClassifier",
+  "cv_mean": 0.7702702702702703,
+  "cv_std": 0.0,
+  "test_accuracy": 0.631578947368421,
+  "test_f1": 0.7741935483870968
+}
