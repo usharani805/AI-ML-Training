@@ -1,0 +1,7 @@
+task,preprocessing,cv_mean,cv_std,metric
+classification,day17_existing,0.9794339645403476,0.012725441954537425,F1
+classification,standard_scaler_all_numeric,0.9794339645403476,0.012725441954537425,F1
+classification,minmax_scaler_all_numeric,0.9728893137166489,0.014932579797386292,F1
+regression,day17_existing,0.5077267938233262,0.00990969616690847,RMSE
+regression,standard_scaler_all_numeric,0.5075745938957861,0.009805779218904727,RMSE
+regression,minmax_scaler_all_numeric,0.5072147759390038,0.009434791773407423,RMSE
