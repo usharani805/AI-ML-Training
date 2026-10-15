@@ -1,15 +1,15 @@
-ï»¿# Machine Learning Training â€” Experiment Log
+# Machine Learning Training — Experiment Log
 
 **Project:** Epic 5 Advanced ML
-**Training Period:** 12â€“16 October 2026
+**Training Period:** 12–16 October 2026
 
-## Day 1 â€” Baseline Review
+## Day 1 — Baseline Review
 
 **Status:** Completed.
 
 **Objective:** Establish simple baseline scores before comparing advanced ML models.
 
-### Classification â€” Breast Cancer
+### Classification — Breast Cancer
 - Dataset: 569 rows, 30 features.
 - Train/test split: 455 / 114.
 - Split strategy: 80/20, `random_state=42`, stratified.
@@ -20,7 +20,7 @@
 - Test accuracy: 0.631579.
 - Test F1: 0.774194.
 
-### Regression â€” California Housing
+### Regression — California Housing
 - Dataset: 20,640 rows, 8 original features before feature engineering.
 - Train/test split: 16,512 / 4,128.
 - Split strategy: 80/20, `random_state=42`.
@@ -29,16 +29,16 @@
 - CV RMSE mean: 1.156172.
 - CV RMSE standard deviation: 0.012163.
 - Test RMSE: 1.144856.
-- Test RÂ²: -0.000219.
+- Test R²: -0.000219.
 
 ### Baseline conclusion
-The dummy models provide reference scores for later model comparisons. The classification baseline predicts the majority class, while the regression baseline predicts the training target mean. The negative regression RÂ² indicates that the baseline does not explain the test target variance and provides a reference for evaluating trained regression models.
+The dummy models provide reference scores for later model comparisons. The classification baseline predicts the majority class, while the regression baseline predicts the training target mean. The negative regression R² indicates that the baseline does not explain the test target variance and provides a reference for evaluating trained regression models.
 
 **Output files:**
 - `epic5_advanced_ml/outputs/classification/baseline_metrics.json`
 - `epic5_advanced_ml/outputs/regression/baseline_metrics.json`
 
-## Day 2 â€” Validation Strategy
+## Day 2 — Validation Strategy
 
 ### Objective
 Select an appropriate validation strategy and inspect
@@ -101,7 +101,7 @@ data leakage risks and model result stability.
 Validation configuration and CV results reviewed.
 Experiment log updated and reviewed.
 
-## Day 3 â€” Model Comparison
+## Day 3 — Model Comparison
 
 **Status:** Completed.
 
@@ -132,7 +132,7 @@ Dataset: California Housing
 Validation: 5-fold KFold, shuffle=True, random_state=42
 Primary metric: RMSE (lower is better)
 
-| Model | CV RMSE | CV Std | Test RMSE | Test RÂ² |
+| Model | CV RMSE | CV Std | Test RMSE | Test R² |
 |---|---:|---:|---:|---:|
 | Random Forest | 0.517237 | 0.003619 | 0.508779 | 0.802461 |
 | Gradient Boosting | 0.519753 | 0.006242 | 0.527564 | 0.787606 |
@@ -142,7 +142,7 @@ Primary metric: RMSE (lower is better)
 | Linear Regression | 0.681365 | 0.030302 | 0.675556 | 0.651730 |
 | Decision Tree | 0.742857 | 0.011924 | 0.705529 | 0.620142 |
 
-Observation: Random Forest has the lowest CV RMSE and test RMSE, and the highest test RÂ² among the compared regression models.
+Observation: Random Forest has the lowest CV RMSE and test RMSE, and the highest test R² among the compared regression models.
 
 ### Day 3 Conclusion
 
@@ -171,8 +171,68 @@ Observation: Random Forest has the lowest CV RMSE and test RMSE, and the highest
 
 **Output:** `epic5_advanced_ml/outputs/preprocessing_comparison.csv`
 
-## Day 4 â€” Tuning and Diagnostics
-**Status:** Pending.
+## Day 4 — Tuning and Diagnostics
 
-## Day 5 â€” Results and Reproducibility
+**Status:** Results reviewed; documentation updated.
+
+### Objective
+Compare tuned models against dummy baselines and the Day 3 model comparison using the existing five-fold cross-validation strategy.
+
+### Baseline Results
+
+| Task | Baseline Model | CV Mean | CV Std | Test Metric |
+|---|---|---:|---:|---|
+| Classification | DummyClassifier | F1: 0.770270 | 0.000000 | Accuracy: 0.631579; F1: 0.774194 |
+| Regression | DummyRegressor | RMSE: 1.156172 | 0.012163 | RMSE: 1.144856; R²: -0.000219 |
+
+### Classification Tuning Results
+
+| Model | Best CV F1 | CV Std | Test F1 | Test ROC-AUC |
+|---|---:|---:|---:|---:|
+| Logistic Regression | 0.986116 | 0.004237 | 0.979310 | 0.995701 |
+| SVM | 0.981015 | Not recorded here | 0.986111 | 0.993717 |
+
+Best parameters:
+- Logistic Regression: `C=0.1`
+- SVM: `kernel=linear`, `C=0.1`
+
+Observation: Logistic Regression achieved the higher reported CV F1 score. SVM achieved the higher test F1 score. Model selection follows the predefined CV metric.
+
+### Regression Tuning Results
+
+| Model | Best CV RMSE | CV Std | Test RMSE | Test R² |
+|---|---:|---:|---:|---:|
+| Random Forest | 0.517336 | 0.011246 | 0.508779 | 0.802461 |
+| Gradient Boosting | 0.521121 | 0.010958 | 0.527564 | 0.787606 |
+
+Best parameters:
+- Random Forest: `n_estimators=100`, `max_depth=None`
+- Gradient Boosting: `n_estimators=150`, `max_depth=5`, `learning_rate=0.03`
+
+Observation: Random Forest achieved the lower CV RMSE and test RMSE among these tuned regression models.
+
+### Validation and Diagnostics
+
+- Classification uses five-fold StratifiedKFold.
+- Regression uses five-fold KFold.
+- Shuffle is enabled and random state is 42.
+- Preprocessing is included in the model pipeline.
+- Code review checks target separation and inspected feature engineering for potential leakage.
+- These code checks do not prove that all possible leakage has been eliminated.
+- Python compilation succeeded.
+- Epic 5 test suite: 70 passed, 16 warnings.
+
+### Output Files
+
+- `epic5_advanced_ml/outputs/classification/baseline_metrics.json`
+- `epic5_advanced_ml/outputs/regression/baseline_metrics.json`
+- `epic5_advanced_ml/day4_outputs/classification/`
+- `epic5_advanced_ml/day4_outputs/regression/`
+
+### Day 4 Conclusion
+
+The tuned Logistic Regression model leads classification on the reported CV F1 metric. Random Forest leads regression on the reported CV RMSE metric. Both tuned models outperform their dummy baselines on the selected CV metrics.
+
+## Day 5 — Results and Reproducibility
+
 **Status:** Pending.
