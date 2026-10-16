@@ -1,0 +1,51 @@
+{
+    "task": "classification",
+    "best_model": "logistic_regression",
+    "tuning_details": {
+        "logistic_regression": {
+            "best_params": {
+                "model__C": 0.1
+            },
+            "best_cv_score": 0.9861164154764722
+        },
+        "svm": {
+            "best_params": {
+                "model__kernel": "linear",
+                "model__C": 0.1
+            },
+            "best_cv_score": 0.9810153888265501
+        }
+    },
+    "accuracy": 0.9736842105263158,
+    "precision": 0.9726027397260274,
+    "recall": 0.9861111111111112,
+    "f1": 0.9793103448275862,
+    "roc_auc": 0.9957010582010581,
+    "test_metrics": {
+        "accuracy": 0.9736842105263158,
+        "precision": 0.9726027397260274,
+        "recall": 0.9861111111111112,
+        "f1": 0.9793103448275862,
+        "roc_auc": 0.9957010582010581
+    },
+    "cross_validation": {
+        "model": "final_model",
+        "cv_mean": 0.9861164154764722,
+        "cv_std": 0.0042373687539358955,
+        "fold_scores": [
+            0.9827586206896551,
+            0.9824561403508771,
+            0.991304347826087,
+            0.9827586206896551,
+            0.991304347826087
+        ]
+    },
+    "validation_strategy": "StratifiedKFold",
+    "n_splits": 5,
+    "random_state": 42,
+    "leakage_checks": {
+        "preprocessor_created_from_training_data": true,
+        "preprocessing_inside_pipeline": true,
+        "test_set_used_for_model_selection": false
+    }
+}

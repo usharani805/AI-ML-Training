@@ -1,0 +1,51 @@
+{
+    "task": "regression",
+    "best_model": "random_forest",
+    "tuning_details": {
+        "random_forest": {
+            "best_params": {
+                "model__n_estimators": 100,
+                "model__max_depth": null
+            },
+            "best_cv_score": -0.5173357666148459
+        },
+        "gradient_boosting": {
+            "best_params": {
+                "model__n_estimators": 150,
+                "model__max_depth": 5,
+                "model__learning_rate": 0.03
+            },
+            "best_cv_score": -0.5211210532251258
+        }
+    },
+    "mae": 0.3312911103439924,
+    "mse": 0.2588562884978839,
+    "rmse": 0.5087792139011615,
+    "r2": 0.8024614507408412,
+    "test_metrics": {
+        "mae": 0.3312911103439924,
+        "mse": 0.2588562884978839,
+        "rmse": 0.5087792139011615,
+        "r2": 0.8024614507408412
+    },
+    "cross_validation": {
+        "model": "final_model",
+        "cv_mean": 0.5173357666148459,
+        "cv_std": 0.011245828839097884,
+        "fold_scores": [
+            0.5292926766244843,
+            0.5079401792054382,
+            0.508295487560729,
+            0.5327896520706118,
+            0.5083608376129664
+        ]
+    },
+    "validation_strategy": "KFold",
+    "n_splits": 5,
+    "random_state": 42,
+    "leakage_checks": {
+        "preprocessor_created_from_training_data": true,
+        "preprocessing_inside_pipeline": true,
+        "test_set_used_for_model_selection": false
+    }
+}

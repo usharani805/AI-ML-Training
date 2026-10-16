@@ -1,15 +1,15 @@
-# Machine Learning Training — Experiment Log
+# Machine Learning Training - Experiment Log
 
 **Project:** Epic 5 Advanced ML
-**Training Period:** 12–16 October 2026
+**Training Period:** 12-16 October 2026
 
-## Day 1 — Baseline Review
+## Day 1 - Baseline Review
 
 **Status:** Completed.
 
 **Objective:** Establish simple baseline scores before comparing advanced ML models.
 
-### Classification — Breast Cancer
+### Classification - Breast Cancer
 - Dataset: 569 rows, 30 features.
 - Train/test split: 455 / 114.
 - Split strategy: 80/20, `random_state=42`, stratified.
@@ -20,7 +20,7 @@
 - Test accuracy: 0.631579.
 - Test F1: 0.774194.
 
-### Regression — California Housing
+### Regression - California Housing
 - Dataset: 20,640 rows, 8 original features before feature engineering.
 - Train/test split: 16,512 / 4,128.
 - Split strategy: 80/20, `random_state=42`.
@@ -29,16 +29,16 @@
 - CV RMSE mean: 1.156172.
 - CV RMSE standard deviation: 0.012163.
 - Test RMSE: 1.144856.
-- Test R²: -0.000219.
+- Test R2: -0.000219.
 
 ### Baseline conclusion
-The dummy models provide reference scores for later model comparisons. The classification baseline predicts the majority class, while the regression baseline predicts the training target mean. The negative regression R² indicates that the baseline does not explain the test target variance and provides a reference for evaluating trained regression models.
+The dummy models provide reference scores for later model comparisons. The classification baseline predicts the majority class, while the regression baseline predicts the training target mean. The negative regression R2 indicates that the baseline does not explain the test target variance and provides a reference for evaluating trained regression models.
 
 **Output files:**
 - `epic5_advanced_ml/outputs/classification/baseline_metrics.json`
 - `epic5_advanced_ml/outputs/regression/baseline_metrics.json`
 
-## Day 2 — Validation Strategy
+## Day 2 - Validation Strategy
 
 ### Objective
 Select an appropriate validation strategy and inspect
@@ -101,7 +101,7 @@ data leakage risks and model result stability.
 Validation configuration and CV results reviewed.
 Experiment log updated and reviewed.
 
-## Day 3 — Model Comparison
+## Day 3 - Model Comparison
 
 **Status:** Completed.
 
@@ -132,7 +132,7 @@ Dataset: California Housing
 Validation: 5-fold KFold, shuffle=True, random_state=42
 Primary metric: RMSE (lower is better)
 
-| Model | CV RMSE | CV Std | Test RMSE | Test R² |
+| Model | CV RMSE | CV Std | Test RMSE | Test R2 |
 |---|---:|---:|---:|---:|
 | Random Forest | 0.517237 | 0.003619 | 0.508779 | 0.802461 |
 | Gradient Boosting | 0.519753 | 0.006242 | 0.527564 | 0.787606 |
@@ -142,7 +142,7 @@ Primary metric: RMSE (lower is better)
 | Linear Regression | 0.681365 | 0.030302 | 0.675556 | 0.651730 |
 | Decision Tree | 0.742857 | 0.011924 | 0.705529 | 0.620142 |
 
-Observation: Random Forest has the lowest CV RMSE and test RMSE, and the highest test R² among the compared regression models.
+Observation: Random Forest has the lowest CV RMSE and test RMSE, and the highest test R2 among the compared regression models.
 
 ### Day 3 Conclusion
 
@@ -171,7 +171,7 @@ Observation: Random Forest has the lowest CV RMSE and test RMSE, and the highest
 
 **Output:** `epic5_advanced_ml/outputs/preprocessing_comparison.csv`
 
-## Day 4 — Tuning and Diagnostics
+## Day 4 - Tuning and Diagnostics
 
 **Status:** Results reviewed; documentation updated.
 
@@ -183,7 +183,7 @@ Compare tuned models against dummy baselines and the Day 3 model comparison usin
 | Task | Baseline Model | CV Mean | CV Std | Test Metric |
 |---|---|---:|---:|---|
 | Classification | DummyClassifier | F1: 0.770270 | 0.000000 | Accuracy: 0.631579; F1: 0.774194 |
-| Regression | DummyRegressor | RMSE: 1.156172 | 0.012163 | RMSE: 1.144856; R²: -0.000219 |
+| Regression | DummyRegressor | RMSE: 1.156172 | 0.012163 | RMSE: 1.144856; R2: -0.000219 |
 
 ### Classification Tuning Results
 
@@ -200,7 +200,7 @@ Observation: Logistic Regression achieved the higher reported CV F1 score. SVM a
 
 ### Regression Tuning Results
 
-| Model | Best CV RMSE | CV Std | Test RMSE | Test R² |
+| Model | Best CV RMSE | CV Std | Test RMSE | Test R2 |
 |---|---:|---:|---:|---:|
 | Random Forest | 0.517336 | 0.011246 | 0.508779 | 0.802461 |
 | Gradient Boosting | 0.521121 | 0.010958 | 0.527564 | 0.787606 |
@@ -233,6 +233,33 @@ Observation: Random Forest achieved the lower CV RMSE and test RMSE among these 
 
 The tuned Logistic Regression model leads classification on the reported CV F1 metric. Random Forest leads regression on the reported CV RMSE metric. Both tuned models outperform their dummy baselines on the selected CV metrics.
 
-## Day 5 — Results and Reproducibility
+## Day 5 - Results and Reproducibility
 
-**Status:** Pending.
+**Status:** Documentation created and metrics reviewed.
+
+### Objective
+Document the selected models, evaluation results, and steps needed to reproduce the experiments.
+
+### Results Review
+- Classification: Logistic Regression (`C=0.1`), CV F1 = 0.986116, test F1 = 0.979310, test ROC-AUC = 0.995701.
+- Regression: Random Forest (`n_estimators=100`, `max_depth=None`), CV RMSE = 0.517336, test RMSE = 0.508779, test RÂ² = 0.802461.
+- Classification and regression metrics were checked against the Day 4 `metrics.json` files.
+
+### Documentation
+- `README.md` documents the project, validation strategy, selected models, and run commands.
+- `EVALUATION_REPORT.md` records the selected models and evaluation metrics.
+- `EXPERIMENT_LOG.md` records the work and results for Days 1-5.
+
+### Reproducibility
+- Random state: 42.
+- Cross-validation: 5 folds.
+- Classification: StratifiedKFold.
+- Regression: KFold.
+- Detailed model artifacts and tuning results are stored in `day4_outputs/`.
+
+### Verification Results
+- Python compilation: no errors.
+- Epic 5 test suite: 35 passed, 7 warnings.
+- Classification and regression metrics were checked against the saved `metrics.json` files.
+- Git changes were reviewed before selecting files for commit.
+- The regression model artifact is approximately 137.86 MB and is excluded from this commit.
