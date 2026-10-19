@@ -465,7 +465,7 @@ class MLPipelineRunner:
                     cv=self.cv,
                     scoring=self._primary_metric(),
                     random_state=RANDOM_STATE,
-                    n_jobs=-1,
+                    n_jobs=1,
                     error_score="raise",
                 )
 

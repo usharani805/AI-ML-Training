@@ -26,3 +26,14 @@ Detailed metrics and model selection notes are in `day4_outputs/classification/`
 
 ## Limitations
 Results depend on the data, preprocessing, validation setup, and package versions. Leakage checks were based on code review and do not prove that all possible leakage has been eliminated.
+
+## Day 2: Leakage-Safe Tuning and Resource Limits
+
+- **Pipeline:** Preprocessing and model fitting are combined in a scikit-learn `Pipeline` to reduce data leakage during cross-validation.
+- **Training-only validation:** `RandomizedSearchCV` uses `self.cv` and fits on `self.X_train` and `self.y_train`. The test set is not used for hyperparameter selection.
+- **Reproducibility:** `RANDOM_STATE = 42` is used for randomized search and applicable model settings.
+- **Bounded search:** `n_iter=min(5, max(1, len(params)))` limits the number of sampled parameter configurations to at most five.
+- **Resource limit:** `RandomizedSearchCV` uses `n_jobs=1` to run one search job at a time.
+- **Failure handling:** `error_score="raise"` exposes fitting errors. Failed candidate tuning is logged and skipped. If no candidate succeeds, a `RuntimeError` is raised.
+- **Boundary validation:** `tune_top_candidates(n=0)` raises a `ValueError`.
+- **Limitations:** A small search budget may miss better hyperparameters. Other estimators and cross-validation operations may use their own parallel processing settings.
