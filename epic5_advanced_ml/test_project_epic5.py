@@ -175,6 +175,49 @@ def test_evaluate_regression_returns_metrics(
     assert metrics["rmse"] >= 0
 
 
+def test_classification_error_analysis_files_created(
+    runner_factory,
+):
+    runner = runner_factory("classification")
+    model = runner._build_pipeline(
+        LogisticRegression(max_iter=1000)
+    )
+    model.fit(runner.X_train, runner.y_train)
+
+    runner._save_error_analysis(model)
+
+    assert (runner.output_dir / "error_analysis.csv").exists()
+    assert (runner.output_dir / "misclassified_samples.csv").exists()
+    assert (runner.output_dir / "confusion_matrix.csv").exists()
+    assert (runner.output_dir / "classification_report.csv").exists()
+
+    analysis = pd.read_csv(runner.output_dir / "error_analysis.csv")
+    assert "actual" in analysis.columns
+    assert "predicted" in analysis.columns
+    assert "correct_prediction" in analysis.columns
+
+
+def test_regression_error_analysis_files_created(
+    runner_factory,
+):
+    runner = runner_factory("regression")
+    model = runner._build_pipeline(LinearRegression())
+    model.fit(runner.X_train, runner.y_train)
+
+    runner._save_error_analysis(model)
+
+    assert (runner.output_dir / "error_analysis.csv").exists()
+    assert (runner.output_dir / "worst_errors.csv").exists()
+
+    analysis = pd.read_csv(runner.output_dir / "error_analysis.csv")
+    assert "actual" in analysis.columns
+    assert "predicted" in analysis.columns
+    assert "residual" in analysis.columns
+    assert "absolute_error" in analysis.columns
+
+    worst_errors = pd.read_csv(runner.output_dir / "worst_errors.csv")
+    assert len(worst_errors) <= 20
+
 @pytest.mark.parametrize(
     "task",
     ["classification", "regression"],

@@ -21,6 +21,8 @@ from sklearn.ensemble import (
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
+    classification_report,
+    confusion_matrix,
     f1_score,
     mean_absolute_error,
     mean_squared_error,
@@ -339,6 +341,64 @@ class MLPipelineRunner:
 
         return metrics
 
+    def _save_error_analysis(self, model):
+        """Save held-out test predictions and error-analysis files."""
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+        actual = np.asarray(self.y_test).ravel()
+        predicted = np.asarray(model.predict(self.X_test)).ravel()
+
+        analysis = pd.DataFrame(self.X_test).reset_index(drop=True)
+        analysis["actual"] = actual
+        analysis["predicted"] = predicted
+
+        if self.task == "classification":
+            analysis["correct_prediction"] = actual == predicted
+            analysis.to_csv(
+                self.output_dir / "error_analysis.csv",
+                index=False,
+            )
+            analysis.loc[~analysis["correct_prediction"]].to_csv(
+                self.output_dir / "misclassified_samples.csv",
+                index=False,
+            )
+
+            labels = np.unique(np.concatenate((actual, predicted)))
+            matrix = confusion_matrix(actual, predicted, labels=labels)
+            pd.DataFrame(
+                matrix,
+                index=[f"actual_{label}" for label in labels],
+                columns=[f"predicted_{label}" for label in labels],
+            ).to_csv(
+                self.output_dir / "confusion_matrix.csv",
+                index_label="actual_class",
+            )
+
+            report = classification_report(
+                actual,
+                predicted,
+                labels=labels,
+                output_dict=True,
+                zero_division=0,
+            )
+            pd.DataFrame(report).transpose().to_csv(
+                self.output_dir / "classification_report.csv",
+                index_label="class",
+            )
+        else:
+            analysis["residual"] = actual - predicted
+            analysis["absolute_error"] = np.abs(analysis["residual"])
+            analysis.to_csv(
+                self.output_dir / "error_analysis.csv",
+                index=False,
+            )
+            analysis.sort_values(
+                "absolute_error",
+                ascending=False,
+            ).head(20).to_csv(
+                self.output_dir / "worst_errors.csv",
+                index=False,
+            )
     def run_all_models(self):
         """Train candidates and create a CV-based leaderboard."""
         rows = []
@@ -614,6 +674,7 @@ class MLPipelineRunner:
         joblib.dump(best_model, model_path)
 
         test_metrics = self._evaluate(best_model)
+        self._save_error_analysis(best_model)
         cv_results = self.cross_validate_final(best_model)
 
         # Keep metrics at the top level for simple consumers/tests.
@@ -699,6 +760,16 @@ class MLPipelineRunner:
             "",
         ])
 
+        report.extend([
+            "",
+            "## Error Analysis",
+            "",
+            "- `error_analysis.csv` contains held-out test features and predictions.",
+            "- Classification results include misclassified samples, confusion matrix, and per-class metrics.",
+            "- Regression results include residuals and the 20 largest absolute errors.",
+            "- Error analysis is performed after model selection and is not used to rank candidate models.",
+            "",
+        ])
         (self.output_dir / "MODEL_SELECTION.md").write_text(
             "\n".join(report),
             encoding="utf-8",
