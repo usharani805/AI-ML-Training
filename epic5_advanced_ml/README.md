@@ -37,3 +37,22 @@ Results depend on the data, preprocessing, validation setup, and package version
 - **Failure handling:** `error_score="raise"` exposes fitting errors. Failed candidate tuning is logged and skipped. If no candidate succeeds, a `RuntimeError` is raised.
 - **Boundary validation:** `tune_top_candidates(n=0)` raises a `ValueError`.
 - **Limitations:** A small search budget may miss better hyperparameters. Other estimators and cross-validation operations may use their own parallel processing settings.
+## Execution Steps
+
+Run the following commands from the repository root in the activated Python virtual environment.
+
+1. Compile the project files:
+
+   `python -m py_compile epic5_advanced_ml/project_final_ml_pipeline.py epic5_advanced_ml/train.py`
+
+2. Run the Epic 5 test suite:
+
+   `pytest epic5_advanced_ml/test_project_epic5.py -q`
+
+3. Display the training CLI options:
+
+   `python -m epic5_advanced_ml.train --help`
+
+**Expected verification evidence:** Python compilation succeeds, the test results are displayed, and the CLI help lists the supported options.
+
+**Note:** Model training and tuning may take time. Results can depend on package versions and the configured environment.
