@@ -263,3 +263,38 @@ Document the selected models, evaluation results, and steps needed to reproduce 
 - Classification and regression metrics were checked against the saved `metrics.json` files.
 - Git changes were reviewed before selecting files for commit.
 - The regression model artifact is approximately 137.86 MB and is excluded from this commit.
+
+## Reproducibility Verification — 22 October 2026
+
+### Execution Details
+- Code revision before this verification: 8a259fe
+- Dataset: Breast Cancer classification and California Housing regression.
+- Random state: 42.
+- Cross-validation: 5 folds; StratifiedKFold for classification and KFold for regression.
+- Preprocessing: included in the model pipeline.
+- Baseline comparison files: `day4_outputs/`.
+- Rerun artifacts: `day4_reproducibility_check/`.
+
+### Classification Rerun
+- Best model: Logistic Regression.
+- Accuracy: 0.973684.
+- Precision: 0.972603.
+- Recall: 0.986111.
+- F1: 0.979310.
+- ROC-AUC: 0.995701.
+- Comparison: all listed metrics match the saved Day 4 results.
+
+### Regression Rerun
+- Best model: Random Forest.
+- MAE: 0.331291.
+- MSE: 0.258856.
+- RMSE: 0.508779.
+- R²: 0.802461.
+- Comparison: metrics match within floating-point tolerance. MAE differs only in the final floating-point digits.
+
+### Verification Evidence
+- Python compilation: successful.
+- Epic 5 test suite: 37 passed, 7 warnings.
+- Rerun metrics were compared with the saved Day 4 metrics.
+- Model artifacts were generated in the reproducibility-check output directories.
+- Limitation: matching metrics do not independently prove that every possible source of data leakage has been eliminated.
