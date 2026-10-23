@@ -1,4 +1,4 @@
-# Machine Learning Training - Experiment Log
+﻿# Machine Learning Training - Experiment Log
 
 **Project:** Epic 5 Advanced ML
 **Training Period:** 12-16 October 2026
@@ -242,7 +242,7 @@ Document the selected models, evaluation results, and steps needed to reproduce 
 
 ### Results Review
 - Classification: Logistic Regression (`C=0.1`), CV F1 = 0.986116, test F1 = 0.979310, test ROC-AUC = 0.995701.
-- Regression: Random Forest (`n_estimators=100`, `max_depth=None`), CV RMSE = 0.517336, test RMSE = 0.508779, test R² = 0.802461.
+- Regression: Random Forest (`n_estimators=100`, `max_depth=None`), CV RMSE = 0.517336, test RMSE = 0.508779, test RÂ² = 0.802461.
 - Classification and regression metrics were checked against the Day 4 `metrics.json` files.
 
 ### Documentation
@@ -264,7 +264,7 @@ Document the selected models, evaluation results, and steps needed to reproduce 
 - Git changes were reviewed before selecting files for commit.
 - The regression model artifact is approximately 137.86 MB and is excluded from this commit.
 
-## Reproducibility Verification � 22 October 2026
+## Reproducibility Verification — 22 October 2026
 
 ### Execution Details
 - Code revision before this verification: 8a259fe
@@ -289,7 +289,7 @@ Document the selected models, evaluation results, and steps needed to reproduce 
 - MAE: 0.331291.
 - MSE: 0.258856.
 - RMSE: 0.508779.
-- R�: 0.802461.
+- R²: 0.802461.
 - Comparison: metrics match within floating-point tolerance. MAE differs only in the final floating-point digits.
 
 ### Verification Evidence
@@ -298,3 +298,11 @@ Document the selected models, evaluation results, and steps needed to reproduce 
 - Rerun metrics were compared with the saved Day 4 metrics.
 - Model artifacts were generated in the reproducibility-check output directories.
 - Limitation: matching metrics do not independently prove that every possible source of data leakage has been eliminated.
+
+## Model Validation Capstone - Inference Verification (23 Oct 2026)
+
+- Classification: Loaded the saved Logistic Regression pipeline and generated predictions for two correctly named input rows.
+- Negative case: The classification pipeline rejected input with unexpected column names.
+- Regression: Loaded the saved Random Forest pipeline, applied the existing feature-engineering function, and generated predictions for two rows.
+- Holdout metrics: Reused existing evaluation records; no new holdout evaluation was performed during these inference checks.
+- Limitation: These checks verify basic inference behavior only; they do not establish production readiness.

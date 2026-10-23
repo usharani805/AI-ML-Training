@@ -4,3 +4,5 @@ __pycache__/
 epic4_ml/models/*.joblib
 epic5_advanced_ml/day25_outputs/*/model.joblib
 epic5_advanced_ml/outputs/*/model.joblib
+epic5_advanced_ml/day4_outputs/regression/model.joblib
+epic5_advanced_ml/day4_reproducibility_check/*/model.joblib
